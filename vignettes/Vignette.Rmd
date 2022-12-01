@@ -1,0 +1,71 @@
+---
+title: "Heather Willmott Vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Heather Willmott Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(HWILLMOTT4753)
+```
+
+# Introduction
+
+This is the package that I have been working on and developing all semester. This vignette will show off some of the functions and the data that I have uploaded to my package this semester.
+
+## Function 1: ntickets
+
+ntickets is a function that determines the maximum number of tickets an airline should sell. It requires the number of seats available on the flight, the probability the flight will truly be overbooked, and the probability that a passenger will show up to run.
+```{r}
+ntickets(200,0.05,0.9)
+```
+
+## Function 2: mymaxlik
+
+mymaxlik is a function that gives you the maximum likelihood estimator for a parameter. It requires a sample, a range for the parameter, and the log likelihood function to run.
+```{r}
+mymaxlik(x=c(9,8,7),param=seq(0,20,length=1000),lfun=function(x,param) log(dexp(x,rate=param)))
+```
+
+
+## Function 3: mybin
+
+mybin is a function that creates a binomial simulation. To run, you will need to put in the number of iterations, the number of trials in each binomial experiment, and the probability of success on each trial.
+```{r}
+mybin(iter=100,n=10,p=0.5)
+```
+
+
+## Function 4: myboot2
+
+myboot2 is a function that creates a bootstrap confidence intervals. To make this function work, we need to put in the number of iterations we want to do, the sample, and the function that we are creating a bootstrap interval for.
+
+```{r}
+myboot2(iter=10000,x=c(1,2,3),fun="mean")
+```
+
+
+## Data: Fire
+```{r}
+head(fire)
+```
+
+# Devtools Check
+
+── R CMD check results ──────────────────── HWILLMOTT4753 0.1.0 ────
+Duration: 18s
+
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+
+R CMD check succeeded
+
+# GitHub Address
